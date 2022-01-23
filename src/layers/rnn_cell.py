@@ -214,7 +214,10 @@ class EideticLSTMCell(object):
 
       output = tf.tanh(memory) * tf.sigmoid(output_gate)
 
-    return output, new_cell, global_memory
+    # # original implementation is wrong according to this issue
+    # # https://github.com/google/e3d_lstm/issues/13
+    # return output, new_cell, global_memory
+    return output, new_cell, new_global_memory
 
 
 class Eidetic2DLSTMCell(EideticLSTMCell):
